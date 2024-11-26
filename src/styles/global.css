@@ -1,7 +1,9 @@
+@import url(./reset.css);
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 16px;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -11,37 +13,50 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /*
+   * GLOBAL VARIABLES
+   */
+  --text-color-thlg: #000;
+  --background-color-thlg: #dce4da;
+  --background-color-main-action-thlg: #000;
+  --text-color-main-action-thlg: #f4f4f0;
+  --background-element-color-400-thlg: ##e9e9e1;
+  --background-element-color-100-thlg: #fbfbfa;
+  --accent-color: #69be28;
+
+  --text-color-gl: var(--text-color-thlg);
+  --background-color-gl: var(--background-color-thlg);
+  --background-color-main-action-gl: var(--background-color-main-action-thlg);
+  --background-element-color-400-gl: var(--background-element-color-400-thlg);
+  --background-element-color-100-gl: var(--background-element-color-100-thlg);
+  --text-color-main-action-gl: var(--text-color-main-action-thlg);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+* {
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/*
+ * GLOBAL CLASSES
+ */
+
+.router_link {
+  text-decoration: none;
+  color: var(--text-lg-gl);
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.responsive_hover_button {
+  transition: transform 0.2s ease-out;
+  &:hover {
+    transform: translate(-0.3rem, -0.3rem);
+    box-shadow: 0.3rem 0.3rem 0rem var(--background-color-main-action-gl);
+  }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }

@@ -1,8 +1,9 @@
 export const API_URLS = {
   LINK: {
-    INDEX: "/link",
-    GENERATE: "/link/generate",
-    CREATE_SHORT: "/link/short-url",
+    INDEX: `/link`,
+    GET_ALL: "/link/all",
+    GENERATE: `link/generate`,
+    CREATE: "/link/create-short",
   },
   USER: {
     INDEX: "/user",

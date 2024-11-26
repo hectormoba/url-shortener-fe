@@ -1,12 +1,16 @@
 <script lang="ts" setup>
-import Button from "@/modules/common/components/Button.vue";
-import { getQuery } from "@/api/handler";
+import Chip from "@/modules/common/components/Chip.vue";
+import { postQuery } from "@/api/handler";
 import { createShortLink } from "../services/createShortLink";
-import { CreateShortLinkResponse } from "../domain/request.types";
+import ANInput from "@/modules/common/components/ANInput.vue";
+import Card from "@/modules/common/components/Card.vue";
+import { ref } from "vue";
+
+const inputLink = ref("");
 async function handleSubmit(e: Event) {
   e.preventDefault();
-  const { data, isError, isSuccess } = await getQuery<CreateShortLinkResponse>({
-    getFn: createShortLink,
+  const { data, isError, isSuccess } = await postQuery({
+    postFn: () => createShortLink(inputLink.value),
   });
   if (isSuccess) {
     console.log(data);
@@ -16,13 +20,16 @@ async function handleSubmit(e: Event) {
 
 <template>
   <section>
-    <form>
-      <input />
-      <Button
-        type="submit"
-        :onClick="async (e) => await handleSubmit(e)"
-        text="Button"
-      />
-    </form>
+    <Card templateRows="repeat(4, 1fr)">
+      <form>
+        <ANInput :value="inputLink" @change-ev="(val) => (inputLink = val)" />
+        <Chip
+          type="submit"
+          :onClick="async (e) => await handleSubmit(e)"
+          text="Create link"
+          animationOff
+        />
+      </form>
+    </Card>
   </section>
 </template>

@@ -16,9 +16,24 @@ export interface GetFromAPIParams {
   getFn: <T = unknown>(req?: GetHandlerParams) => Promise<T>;
 }
 
-export interface GetFromAPIResponse<Data> {
+export interface PostToAPIParams {
+  postFn: (body?: any) => Promise<DefaultPostAPIResponseData>;
+}
+
+export interface GetAPIResponse<Data> {
   data?: Data;
   error?: any;
   isSuccess: boolean;
   isError: boolean;
+}
+
+export interface PostAPIResponse<Data = DefaultPostAPIResponseData> {
+  data?: Data;
+  error?: any;
+  isSuccess: boolean;
+  isError: boolean;
+}
+
+export interface DefaultPostAPIResponseData {
+  message: string;
 }
